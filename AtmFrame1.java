@@ -114,10 +114,23 @@ public class AtmFrame1 extends JFrame implements ActionListener {
 		}
 		if(msg.equals("Withdraw Money")) {
 			wd= Integer.parseInt(t2.getText());
-			bal -= wd;
-			l4.setText("New balance "+bal);
-			l4.setVisible(true);
-			t2.setText("");
+			if(wd<=bal) {
+				if(wd%100== 0) {
+					bal -= wd;
+					l4.setText("New balance "+bal);
+					l4.setVisible(true);
+					t2.setText("");
+				}
+				else {
+					l4.setText("Enter amount in multiples of 100");
+					l4.setVisible(true);
+				}
+			}
+			else {
+				l4.setText("Insufficient balance!");
+				l4.setVisible(true);
+				t2.setText("");
+			}
 		}
 
 
